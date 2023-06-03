@@ -6,9 +6,17 @@ import axios from 'axios';
 
 const app = express();
 
-app.use(cors());
-app.use(router);
+const corsConfig = {
 
+  origin: 'http://localhost:5173',
+  credentials: true,
+
+};
+
+app.use(cors(corsConfig));
+app.use(express.json());
+
+app.use(router);
 
 await connectDB();
 

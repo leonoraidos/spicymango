@@ -14,3 +14,12 @@ export const fetchData = async (page, limit) => {
     console.error(error);
   }
 };
+
+export const fetchAlbumById = async (id) => {
+  try {
+    const response = await axios.get(`${baseURL}album/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}

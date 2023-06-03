@@ -43,6 +43,7 @@ const RecordsList = () => {
 
   const { users = [], albums = [], photos = [] } = data || {};
 
+
     return (
       <div className="container mx-auto p-6 rounded-md">
         <form onSubmit={handleSubmit} className="flex flex-row justify-around">
@@ -76,7 +77,7 @@ const RecordsList = () => {
           {albums
             .filter((album) => album.userId === user.id)
             .map((album) => (
-              <RecordsCard key={album.id} title={album.title.toUpperCase()} isAlbum={true}>
+              <RecordsCard key={album.id} title={album.title.toUpperCase()} isAlbum={true} id={album.id}>
                 {photos
                   .filter((photo) => photo.albumId === album.id)
                   .map((photo) => (
