@@ -67,6 +67,7 @@ export const populateDB = async (_, res) => {
         }
       }
     };
+    res.status(200).json({ message: "Populating DB was succesful" });
 
   } catch (error) {
     console.log(error);
@@ -98,8 +99,8 @@ export const getPaginatedData = async (req, res) => {
     const skip = (page - 1) * limit;
 
     const users = await USER.find().skip(skip).limit(limit).lean();
-    const albums = await ALBUM.find().skip(skip).limit(limit).lean();
-    const photos = await PHOTO.find().skip(skip).limit(limit).lean();
+    const albums = await ALBUM.find().skip(skip).lean();
+    const photos = await PHOTO.find().skip(skip).lean();
 
     res.status(200).json({ users, albums, photos });
 
