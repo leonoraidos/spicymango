@@ -11,7 +11,7 @@ const uri = `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@spicymango.rvfne4x.mong
 const connectDB = async () => {
   try {
     await mongoose.connect(uri, { dbName: 'SpicyMango' }); // mainDB -> This is the name of the DB
-    console.log('🚀 Connected to DB');
+    console.log('Connected to DB');
     return { success: true };
   } catch (error) {
     console.log('Error connecting to DB: ', error.message);
