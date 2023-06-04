@@ -26,7 +26,7 @@ export const createAlbum = async (req, res) => {
       title: albumName,
     });
     await newAlbum.save();
-    res.status(200).json({ message: "Creating data was succesful" });
+    res.status(201).json({ message: "Creating data was succesful" });
 
   } catch (error) {
     console.log(error);
@@ -36,7 +36,7 @@ export const createAlbum = async (req, res) => {
 
 export const updateAlbum = async (req, res) => {
   try {
-    console.log('we are here')
+  
     const id = req.params.id;
     const newName = req.body.albumName;
     await ALBUM.findOneAndUpdate({ id: id }, { title: newName });
@@ -52,7 +52,7 @@ export const deleteAlbum = async (req, res) => {
     const id = req.params.id;
     await ALBUM.findOneAndDelete({ id: id });
     await PHOTO.deleteMany({ albumId: id });
-    res.status(200).json({ message: "Deleting data was succesful" });
+    res.status(204).json({ message: "Deleting data was succesful" });
 
   } catch (error) {
     console.log(error);

@@ -67,7 +67,7 @@ export const populateDB = async (_, res) => {
         }
       }
     };
-    res.status(200).json({ message: "Populating DB was succesful" });
+    res.status(201).json({ message: "Populating DB was succesful" });
 
   } catch (error) {
     console.log(error);

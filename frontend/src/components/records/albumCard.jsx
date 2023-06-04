@@ -49,8 +49,8 @@ const AlbumCard = () => {
   return (
     <>
       {album && (
-        <div className="container mx-auto mt-24 p-6 rounded-md">
-          <div className="bg-zinc-300 shadow-lg p-6 mb-4 rounded-md">
+        <div className="container mx-auto mt-24 p-6 rounded-md  overflow-visible">
+          <div className="bg-zinc-300 shadow-lg p-6 mb-4 rounded-md bg-gray-500 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-20 border border-gray-100">
             {isEditing ? (
               <form onSubmit={handleAlbumTitleChangeSubmit}>
                 <input
@@ -59,7 +59,7 @@ const AlbumCard = () => {
                   onChange={handleChange}
                   className="w-full mb-2"
                 />
-                <button type="submit" className="bg-zinc-500 hover:bg-zinc-600 text-white font-bold py-2 px-4 rounded">
+                <button type="submit" className="bg-zinc-500 hover:bg-zinc-600 text-gray-800 font-bold py-2 px-4 rounded">
                   Save
                 </button>
               </form>
