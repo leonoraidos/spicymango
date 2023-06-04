@@ -6,7 +6,7 @@ const PhotoCarousel = ({photos}) => {
 
   return (
     <Carousel
-      className="rounded-xl"
+      className="rounded-xl overflow-hidden"
       navigation={({ setActiveIndex, activeIndex, length }) => (
         <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">
           {new Array(length).fill("").map((_, i) => (
@@ -27,7 +27,7 @@ const PhotoCarousel = ({photos}) => {
 
             src={photo.url}
             alt={photo.title}
-            className="h-[600px] w-[600px] object-cover"
+            className="h-[500px] w-[500px] object-cover mx-auto rounded-sm"
             style={{ objectFit: "cover" }}
           />
         </div>

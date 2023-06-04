@@ -23,3 +23,35 @@ export const fetchAlbumById = async (id) => {
     console.error(error);
   }
 }
+
+export const fetchCreateAlbum = async (userId, albumName) => {
+  console.log('in api service making req', userId, albumName)
+  try {
+    const response = await axios.post(`${baseURL}createalbum/${userId}`, {
+      albumName: albumName,
+    });
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export const fetchDeleteAlbum = async (albumId) => {
+  try {
+    const response = await axios.delete(`${baseURL}deletealbum/${albumId}`);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export const fetchUpdateAlbum = async (albumId, albumName) => {
+  try {
+    const response = await axios.patch(`${baseURL}updatealbum/${albumId}`, {
+      albumName: albumName,
+    });
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}

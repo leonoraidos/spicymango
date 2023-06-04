@@ -2,6 +2,7 @@ import { fetchData } from "../../services/api.js";
 import { useQuery } from "react-query";
 import RecordsCard from "./recordsCard";
 import { useState } from "react";
+import { fetchCreateAlbum } from "../../services/api.js";
 
 const RecordsList = () => {
 
@@ -43,37 +44,52 @@ const RecordsList = () => {
 
   const { users = [], albums = [], photos = [] } = data || {};
 
+  console.log(albums)
+
+  const createAlbum = async (userId, albumName) => {
+    await fetchCreateAlbum(userId, albumName);
+  }
 
     return (
-      <div className="container mx-auto p-6 rounded-md">
-        <form onSubmit={handleSubmit} className="flex flex-row justify-around">
+      <div className="container mx-auto mt-24 p-6 rounded-md">
+        <form onSubmit={handleSubmit} className="flex flex-row mb-2 ">
           <label>
             Page:
-            <input type="number" value={page} onChange={handlePageChange} className="w-14 mx-auto ml-2 mr-2"/>
+            <input type="number" value={page} onChange={handlePageChange} className="w-14 mx-auto ml-2 mr-2 mt-2"/>
           </label>
           <label>
             Limit:
-            <input type="number" value={limit} onChange={handleLimitChange} className="w-14 mx-auto ml-2 mr-2"/>
+            <select type="number" value={limit} onChange={handleLimitChange} className="w-14 mx-auto ml-2 mr-2 mt-2">
+              <option value="2">2</option>
+              <option value="5">5</option>
+              <option value="10">10</option>
+            </select>
           </label>
-          <button type="submit" className="bg-orange-400 hover:bg-orange-600 mx-auto font-bold py-2 px-4 rounded mr-2">Fetch Data</button>
+          <button type="submit" className="bg-orange-400 hover:bg-orange-600 font-bold py-2 px-4 rounded mr-2 mb-2 ml-2">Apply Limit</button>
       </form>
         <div className="flex justify-between justify-center m-4">
           <button
-            className="bg-orange-400 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded mr-2"
+            className="bg-orange-400 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded -mr-2 w-36"
             onClick={() => setPage((prevPage) => Math.max(prevPage - 1, 1))}
             disabled={page === 1}
           >
             Previous Page
           </button>
           <button
-            className="bg-orange-400 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded"
+            className="bg-orange-400 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded w-36 -mr-2"
             onClick={() => setPage((prevPage) => prevPage + 1)}
           >
             Next Page
           </button>
         </div>
       {users.map((user) => (
-        <RecordsCard key={user.id} title={user.firstName + ' ' + user.lastName}>
+        <RecordsCard
+        key={user.id}
+        title={user.firstName + ' ' + user.lastName}
+        userId={user.id}
+        createAlbum={createAlbum}
+      >
+
           {albums
             .filter((album) => album.userId === user.id)
             .map((album) => (

@@ -9,7 +9,7 @@ const app = express();
 const corsConfig = {
 
   origin: 'http://localhost:5173',
-  credentials: true,
+  methods: ['GET', 'POST', 'PATCH', 'DELETE'],
 
 };
 
