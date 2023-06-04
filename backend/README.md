@@ -7,6 +7,7 @@
 - <strong> Populate Data [/populate] </strong>
 <lb>
 This endpoint is used to populate the data from the external API to the Database.
+This endpoint retrieves user data, album data, and photo data from external APIs and saves them in the database.
 
 ##### Request Method: GET
   ###### Response
@@ -17,7 +18,7 @@ This endpoint is used to populate the data from the external API to the Database
 
 - <strong> Get All Data [/data/all] </strong>
 <lb>
-This endpoint returns all the data available in the API.
+This endpoint returns all user data, album data, and photo data stored in the database.
 
 ##### Request Method: GET
   ###### Response
@@ -43,7 +44,7 @@ This endpoint returns paginated data based on the specified page and limit param
 
  - <strong> Get Album by ID [/album/:id] </strong>
 <lb>
-This endpoint retrieves a specific album by its ID.
+This endpoint retrieves a specific album by its ID. Returns the album details and a list of photos associated with the specified album ID.
 
  ##### Request Method: GET
    ###### Path Parameters:
