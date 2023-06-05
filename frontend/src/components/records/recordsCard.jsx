@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useQueryClient } from 'react-query';
 import { fetchDeleteAlbum } from '../../services/api.js';
+import { BsArrowsAngleExpand } from 'react-icons/bs';
 
 const RecordsCard = ({ title, children, isAlbum, id, createAlbum, userId}) => {
   const queryClient = useQueryClient();
@@ -32,9 +33,10 @@ const RecordsCard = ({ title, children, isAlbum, id, createAlbum, userId}) => {
 
   <div className={`${isAlbum ? 'bg-gray-300' : 'bg-gray-100'} "shadow-lg p-6 mb-4 rounded-md `}>
     {isAlbum ?
-    <a href={`/album/${id}`}>
-      <h2 className="text-lg font-bold mb-2 text-gray-800 mx-auto">
+    <a href={`/album/${id}`} >
+      <h2 className="text-lg font-bold mb-2 text-gray-800 mx-auto flex flex-row ">
       {title}
+        <BsArrowsAngleExpand className='ml-2 mt-1'></BsArrowsAngleExpand>
       </h2>
     </a> :
     <>
